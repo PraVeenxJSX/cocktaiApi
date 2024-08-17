@@ -1,6 +1,6 @@
 import React from "react"
 import Cocktailapi from "./Components/Cocktailapi"
-// import JsonPlaceholder from "./Components/JsonPlaceholder"
+import JsonPlaceholder from "./Components/JsonPlaceholder"
 
 function App() {
 return (

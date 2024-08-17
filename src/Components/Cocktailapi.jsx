@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css'
+import '../App.css';
 
 const App = () => {
   const [drinks, setDrinks] = useState([]);
@@ -35,35 +35,34 @@ const App = () => {
   };
 
   return (
-    <div className='container'>
-      <form className='form' onSubmit={handleSearch}>
+    <div className="container">
+      <form className="form" onSubmit={handleSearch}>
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search for a drink"
-          className='input'
+          className="input"
         />
-        <button type="submit"  className="search-button">Search</button>
+        <button type="submit" className="search-button">Search</button>
       </form>
 
       {loading && <div className="loading">Loading...</div>}
       {error && <div className="error">Error: {error}</div>}
-      {!loading && drinks.length === 0 &&   <div className="no-items">No items found</div>}
+      {!loading && drinks.length === 0 && <div className="no-items">No items found</div>}
       {!loading && drinks.length > 0 && drinks.map((drink) => (
-        <div key={drink.idDrink} className="data-card" style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
+        <div key={drink.idDrink} className="data-card">
           <h2>{drink.strDrink}</h2>
           <p><strong>Category:</strong> {drink.strCategory}</p>
           <p><strong>Type:</strong> {drink.strAlcoholic}</p>
           <p><strong>Glass:</strong> {drink.strGlass}</p>
           <p><strong>Instructions:</strong> {drink.strInstructions}</p>
-          <img src={drink.strDrinkThumb} alt={drink.strDrink}className="drink-img" style={{ width: '100px', height: '100px' }} />
+          <img src={drink.strDrinkThumb} alt={drink.strDrink} className="drink-img" />
           <ul>
             {drink.strIngredient1 && <li><strong>{drink.strIngredient1}:</strong> {drink.strMeasure1}</li>}
             {drink.strIngredient2 && <li><strong>{drink.strIngredient2}:</strong> {drink.strMeasure2}</li>}
             {drink.strIngredient3 && <li><strong>{drink.strIngredient3}:</strong> {drink.strMeasure3}</li>}
             {drink.strIngredient4 && <li><strong>{drink.strIngredient4}:</strong> {drink.strMeasure4}</li>}
-            
           </ul>
         </div>
       ))}
